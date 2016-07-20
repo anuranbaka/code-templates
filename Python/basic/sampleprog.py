@@ -24,8 +24,11 @@ def parse_args():
 
 def main():
     parse_args()
+    do_stuff()
 
 
+def do_stuff():
+    print infile
 
 
 if __name__ == "__main__":
