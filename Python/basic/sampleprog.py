@@ -11,6 +11,7 @@ def parse_args():
     global infile, verbose
     parser = argparse.ArgumentParser(description="Show a demo program with arguments")
     parser.add_argument("input",
+                        nargs='?',
                         help="the name of the input file to use",
                         type=str,
                         default="a.in")
