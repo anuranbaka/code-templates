@@ -8,14 +8,16 @@ import ConfigParser
 # Input Args
 cfgfile = []
 verbose = []
+cfg={}
 
 
 
 def parse_args():
-    global cfgfile, verbose
+    global cfgfile, verbose, cfg
     parser = argparse.ArgumentParser(description="Show a demo program with arguments")
     parser.add_argument("config",
                         help="the name of the configuration file to use",
+                        nargs='?',
                         type=str,
                         default="default.cfg")
     parser.add_argument("-v", "--verbose",
@@ -24,6 +26,9 @@ def parse_args():
     args = parser.parse_args()
     cfgfile = args.config
     verbose = args.verbose
+    config = ConfigParser.SafeConfigParser()
+    config.read(cfgfile)
+    cfg['infile'] = config.get("Global","Input File")
 
 
 
@@ -34,6 +39,7 @@ def main():
 
 def do_stuff():
     print cfgfile
+    print cfg['infile']
 
 
 if __name__ == "__main__":
